@@ -11,6 +11,7 @@ body {
 }
 
 .header {
+  margin-top: max(30px, calc(60px - 5%));
   font-size: clamp(40px, 12vw, 70px);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   text-align: center;
@@ -39,11 +40,15 @@ body {
 
     &.hover {
       cursor: pointer;
-      &:active, &.key {
+      &:active,
+      &.key {
         #button {
           display: none;
         }
       }
+    }
+    &.hold #button {
+      display: none;
     }
 
     img {

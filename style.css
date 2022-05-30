@@ -6,6 +6,7 @@ body {
 }
 
 .header {
+  margin-top: max(30px, calc(60px - 5%));
   font-size: clamp(40px, 12vw, 70px);
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   text-align: center;
@@ -36,6 +37,9 @@ body {
   cursor: pointer;
 }
 .button .collide.hover:active #button, .button .collide.hover.key #button {
+  display: none;
+}
+.button .collide.hold #button {
   display: none;
 }
 .button .collide img {

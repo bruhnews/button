@@ -6,12 +6,17 @@ sound.src = "./audio/bruh.mp3";
 sound.preload = "auto";
 
 // Play sound
+var lastPlay = 0;
 function play() {
+  if (Date.now() - lastPlay < 100) {
+    return;
+  }
+  lastPlay = Date.now();
   sound.currentTime = 0.12;
   sound.play();
-  bg.s += 20;
+  bg.s += 10;
   bg.v += 20;
-  bg.h += 100;
+  bg.h += 40;
 }
 
 function playIfHover() {
@@ -41,8 +46,8 @@ addEventListener("keyup", event => {
 F.createListeners();
 function update(mod) {
   // Background color
-  bg.s = F.clamp(bg.s - 1 * mod, 70, 100);
-  bg.v = F.clamp(bg.v - 1 * mod, 50, 100);
+  bg.s = F.clamp(bg.s - 0.5 * mod, 70, 100);
+  bg.v = F.clamp(bg.v - 0.5 * mod, 50, 100);
   bg.h = (bg.h + bg.speed) % 360;
   $("body").css("background-color", F.hsv2hex(bg));
 
@@ -51,6 +56,11 @@ function update(mod) {
   color.h += 180;
   $(".header").css("-webkit-text-stroke-color", F.hsv2hex(color));
 
+  // Hold button extra
+  $(".collide").removeClass("hold");
+  if (Date.now() - lastPlay < 100) {
+    $(".collide").addClass("hold");
+  }
   // Reset classes
   $(".collide").removeClass("hover");
   $(".collide").removeClass("key");
