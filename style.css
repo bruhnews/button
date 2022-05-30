@@ -35,6 +35,9 @@ body {
 .button .collide.hover {
   cursor: pointer;
 }
+.button .collide.hover:active #button, .button .collide.hover.key #button {
+  display: none;
+}
 .button .collide img {
   position: absolute;
   width: 100%;

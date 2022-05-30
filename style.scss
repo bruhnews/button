@@ -39,6 +39,11 @@ body {
 
     &.hover {
       cursor: pointer;
+      &:active, &.key {
+        #button {
+          display: none;
+        }
+      }
     }
 
     img {

@@ -7,42 +7,43 @@
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
     <meta content="utf-8" http-equiv="encoding" />
 
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="/style.css" />
 
     <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-latest.min.js"
     ></script>
-    <!-- <script
-      type="text/javascript"
-      src="https://fortissimojs.github.io/index.vanilla.min.js"
-    ></script> -->
     <script
       type="text/javascript"
-      src="http://127.0.0.1:5501/index.vanilla.js"
+      src="https://fortissimojs.github.io/index.vanilla.min.js"
     ></script>
-    <!--! Remove defer -->
-    <script type="text/javascript" src="./script.js" defer></script>
+    <script type="text/javascript" src="/script.js"></script>
 
-    <link rel="shortcut icon" href="./image/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="/image/favicon.png" type="image/png" />
   </head>
   <body>
     <h1 class="header">BRUH BUTTON</h1>
 
     <div class="button">
-      <div class="collide">
-        <img class="glow" src="image/glow.png" type="image/png" />
+      <div class="collide" onclick="playIfHover()">
+        <img class="glow" src="/image/glow.png" type="/image/png" />
 
         <img
+          id="button-down"
+          src="/image/button_down.png"
+          type="image/png"
+          alt="<<Bruh Button>>"
+        />
+        <img
+          class="button"
           id="button"
-          onclick="play()"
-          src="image/button1.png"
+          src="/image/button.png"
           type="image/png"
           alt="[Bruh Button]"
         />
       </div>
     </div>
 
-    <a class="footer" href="https://bruh.news"> Full version coming soon! </a>
+    <a class="footer" href="https://bruh.news"> More at <i>bruh.news</i> </a>
   </body>
 </html>

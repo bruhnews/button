@@ -11,6 +11,12 @@ function play() {
   sound.play();
 }
 
+function playIfHover() {
+  if ($(".collide").is(".hover")) {
+    play();
+  }
+}
+
 // Frame
 F.createListeners();
 function update() {
@@ -25,24 +31,34 @@ function update() {
 
   // Collision with mouse
   $(".collide").removeClass("hover");
-  $("#button").attr("src", "image/button2.png");
+  $(".collide").removeClass("key");
+  if (F.keys.Space) {
+    $(".collide").addClass("hover");
+    $(".collide").addClass("key");
+  }
   if ($("#button")[0]) {
     var rect = $("#button")[0].getBoundingClientRect();
     if (
       F.collide.circle2circle(F.mouse, {
-        x: rect.x + rect.width / 2,
-        y: rect.y + rect.height / 2,
-        r: Math.min(rect.right - rect.x, rect.bottom - rect.y) / 2,
+        x: rect.x + rect.width / 2 || 0,
+        y: rect.y + rect.height / 2 || 0,
+        r: Math.max(
+          Math.min(rect.right - rect.x, rect.bottom - rect.y) / 2,
+          100,
+        ),
       })
     ) {
       $(".collide").addClass("hover");
-
-      if (F.mouse.left) {
-        $("#button").attr("src", "image/button1.png");
-      }
     }
   }
 
   requestAnimationFrame(update);
 }
 update();
+
+addEventListener("keydown", event => {
+  if (event.code === "Space") {
+    $(".collide").addClass("hover");
+    play();
+  }
+});
