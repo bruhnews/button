@@ -33,11 +33,20 @@ body {
   border-radius: 100%;
   transform: translate(0, max(0px, calc(100% - 380px)));
 }
+.button .collide #button-down {
+  opacity: 0;
+}
 .button .collide.hover {
   cursor: pointer;
 }
+.button .collide.hover:active #button-down, .button .collide.hover.key #button-down {
+  opacity: 1;
+}
 .button .collide.hover:active #button, .button .collide.hover.key #button {
   display: none;
+}
+.button .collide.hold #button-down {
+  opacity: 1;
 }
 .button .collide.hold #button {
   display: none;

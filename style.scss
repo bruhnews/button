@@ -38,17 +38,28 @@ body {
     border-radius: 100%;
     transform: translate(0, max(0px, calc(100% - #{$lower})));
 
+    #button-down {
+      opacity: 0;
+    }
     &.hover {
       cursor: pointer;
       &:active,
       &.key {
+        #button-down {
+          opacity: 1;
+        }
         #button {
           display: none;
         }
       }
     }
-    &.hold #button {
-      display: none;
+    &.hold {
+      #button-down {
+        opacity: 1;
+      }
+      #button {
+        display: none;
+      }
     }
 
     img {

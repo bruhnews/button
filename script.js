@@ -8,7 +8,7 @@ sound.preload = "auto";
 // Play sound
 var lastPlay = 0;
 function play() {
-  if (Date.now() - lastPlay < 100) {
+  if (Date.now() - lastPlay < 80) {
     return;
   }
   lastPlay = Date.now();
