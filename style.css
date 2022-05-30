@@ -1,0 +1,62 @@
+body {
+  background-color: darkblue;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.header {
+  font-size: clamp(40px, 12vw, 70px);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  font-weight: 500;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: green;
+}
+
+.button {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.button .collide {
+  position: relative;
+  width: clamp(10px, 70vh, 90%);
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  transform: translate(0, max(0px, calc(100% - 380px)));
+}
+.button .collide.hover {
+  cursor: pointer;
+}
+.button .collide img {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.button .collide img.glow {
+  width: 115%;
+}
+
+.footer {
+  position: fixed;
+  display: inline-block;
+  bottom: 10px;
+  right: 10px;
+  padding: 7px;
+  text-align: right;
+  border-radius: 10px;
+  background-color: #111a;
+  color: #ddd;
+}
+.footer:not(:hover) {
+  text-decoration: none;
+}

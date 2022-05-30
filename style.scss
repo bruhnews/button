@@ -1,0 +1,72 @@
+$collide: clamp(10px, 70vh, 90%);
+$lower: 380px;
+$button: 1;
+$glow: 1.15;
+
+body {
+  background-color: darkblue;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+.header {
+  font-size: clamp(40px, 12vw, 70px);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  font-weight: 500;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: green;
+}
+
+.button {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  .collide {
+    position: relative;
+    width: $collide;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    transform: translate(0, max(0px, calc(100% - #{$lower})));
+
+    &.hover {
+      cursor: pointer;
+    }
+
+    img {
+      position: absolute;
+      width: #{$button * 100%};
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &.glow {
+        width: #{$button * $glow * 100%};
+      }
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  display: inline-block;
+  bottom: 10px;
+  right: 10px;
+  padding: 7px;
+  text-align: right;
+  border-radius: 10px;
+  background-color: #111a;
+  color: #ddd;
+
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
