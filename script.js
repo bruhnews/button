@@ -1,4 +1,4 @@
-const bg = { h: 0, s: 80, v: 80, speed: 0.3 };
+const bg = { h: 0, s: 0, v: 0, speed: 0.3 };
 
 // Create sound
 const sound = new Audio();
@@ -9,6 +9,9 @@ sound.preload = "auto";
 function play() {
   sound.currentTime = 0.12;
   sound.play();
+  bg.s += 20;
+  bg.v += 20;
+  bg.h += 100;
 }
 
 function playIfHover() {
@@ -17,10 +20,29 @@ function playIfHover() {
   }
 }
 
+// Space key
+var spaceKey = false;
+addEventListener("keydown", event => {
+  if (event.code === "Space") {
+    if (!spaceKey) {
+      $(".collide").addClass("hover");
+      play();
+    }
+    spaceKey = true;
+  }
+});
+addEventListener("keyup", event => {
+  if (event.code === "Space") {
+    spaceKey = false;
+  }
+});
+
 // Frame
 F.createListeners();
-function update() {
+function update(mod) {
   // Background color
+  bg.s = F.clamp(bg.s - 1 * mod, 70, 100);
+  bg.v = F.clamp(bg.v - 1 * mod, 50, 100);
   bg.h = (bg.h + bg.speed) % 360;
   $("body").css("background-color", F.hsv2hex(bg));
 
@@ -29,13 +51,15 @@ function update() {
   color.h += 180;
   $(".header").css("-webkit-text-stroke-color", F.hsv2hex(color));
 
-  // Collision with mouse
+  // Reset classes
   $(".collide").removeClass("hover");
   $(".collide").removeClass("key");
-  if (F.keys.Space) {
+  if (spaceKey) {
     $(".collide").addClass("hover");
     $(".collide").addClass("key");
   }
+
+  // Collision with mouse
   if ($("#button")[0]) {
     var rect = $("#button")[0].getBoundingClientRect();
     if (
@@ -51,14 +75,13 @@ function update() {
       $(".collide").addClass("hover");
     }
   }
-
-  requestAnimationFrame(update);
 }
-update();
 
-addEventListener("keydown", event => {
-  if (event.code === "Space") {
-    $(".collide").addClass("hover");
-    play();
-  }
-});
+// Run frame function
+function main() {
+  update((Date.now() - then) / 1000);
+  the = Date.now();
+  requestAnimationFrame(main);
+}
+var then = Date.now();
+main();
