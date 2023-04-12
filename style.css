@@ -31,7 +31,7 @@ body {
   width: clamp(10px, 70vh, 90%);
   aspect-ratio: 1/1;
   border-radius: 100%;
-  transform: translate(0, max(0px, calc(100% - 380px)));
+  transform: translate(0, max(0px, calc(100% - 460px)));
 }
 .button .collide #button-down {
   opacity: 0;
